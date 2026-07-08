@@ -36,6 +36,9 @@
 		<h2>Welcome <%=session.getAttribute("username") %></h2>
 		<p>You are successfully logged in.</p>
 	</div>
+	<div>
+		<%@include file="myComplaint.jsp" %>
+	</div>
 </div>
 
 
