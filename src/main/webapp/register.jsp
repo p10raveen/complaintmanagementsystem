@@ -29,8 +29,19 @@
 						</div>
 						<div class="form-group">
 							<label>Password</label>
-							<input type="password" name="password" class="form-control" required/>
+							<input type="password" id="pass" onkeyup = "passwordValidate()" name="password" class="form-control" required/>
+							<p id="res"></p>
 						</div>
+						
+						<div class="form-group">
+							<label>Confirm Password</label>
+							<input type="password" id="cpass"  
+							onkeyup="checkPassword()"
+							class="form-control" required/>
+							
+							<p id="result"></p>
+						</div>
+						
 						<input type="submit" class="btn btn-success btn-block" value="Register"/>
 					</form>
 					<br/>
@@ -41,4 +52,44 @@
 	</div>
 </div>
 </body>
+<script>
+function passwordValidate()
+{
+	pass = document.getElementById("pass").value;
+	cpass = document.getElementById("cpass");
+	
+	if(pass.length < 8)
+	{
+		document.getElementById("res").innerHTML = "Password must be at least 8 character.";
+		document.getElementById("res").style.color = "red";
+		
+		cpass.disabled = true;
+	}
+	else
+	{
+		cpass.disabled = false;
+	}
+	
+	
+}
+	
+	
+	function checkPassword()
+	{
+		pass = document.getElementById("pass").value;
+		cpass = document.getElementById("cpass").value;
+		
+		if(pass==cpass)
+		{
+			document.getElementById("result").innerHTML = "Password Matched";
+			document.getElementById("result").style.color = "green";
+		}
+		else
+		{
+			document.getElementById("result").innerHTML = "Password Not Matched";	
+			document.getElementById("result").style.color = "red";
+		}
+		
+	}
+</script>
 </html>
